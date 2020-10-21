@@ -3,21 +3,24 @@ import {Container,ListGroup,ListGroupItem,Button} from "reactstrap";
 import { CSSTransition, TransitionGroup}from "react-transition-group";
 import {v1 as uuid} from "uuid";
 
+//connect form wrap component
+import {connect} from 'react-redux';
+//action
+import {getTodos} from '../../redux/action/todoActions';
+
+
 
 class TodoList extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            todos: [
-                {id:uuid(),name:'jardin',status:false},
-                {id:uuid(),name:'cuisine',status:false},
-                {id:uuid(),name:'ranger',status:true},
-                {id:uuid(),name:'acheter un turc',status:false},
-                {id:uuid(),name:'autre',status:false}
-            ]
-        };
+        this.state = {};
 
     }
+
+    componentDidMount(){
+        this.props.getTodos();
+    }
+
 
     addTodo = () =>{
         const name = prompt('Enter todo')
@@ -37,6 +40,7 @@ class TodoList extends Component {
 
 
     render() {
+        console.log(this.props.todos)
 
         return (
             <Container>
@@ -50,7 +54,7 @@ class TodoList extends Component {
 
                 <ListGroup>
                     <TransitionGroup className="todo-list">
-                        {this.state.todos.map(({id,name})=>(
+                        {this.props.todos && this.props.todos.todos.map(({id,name})=>(
 
                             <CSSTransition key={id} timeout={500} classNames="fade">
                                 <ListGroupItem>
@@ -72,4 +76,6 @@ class TodoList extends Component {
     }
 }
 
-export default TodoList;
+//  state ----> combineReduceer -----> statevalue
+const mapStateToProps = (state) =>({todos:state.todo})
+export default connect(mapStateToProps,{getTodos})(TodoList);
