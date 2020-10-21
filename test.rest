@@ -1,0 +1,12 @@
+
+GET http://localhost:5001/api/todos
+
+###
+
+POST http://localhost:5001/api/todos
+content-type: application/json
+
+
+{
+    "name":"toto"
+}

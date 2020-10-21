@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
+const todos = require('./routes/api/todo');
 
 const app = express();
 
@@ -18,6 +19,10 @@ mongoose.connect(db,{ useUnifiedTopology: true,useNewUrlParser: true })
 }).catch(err=>{
     console.log(err)
 })
+
+
+//use route 
+app.use('/api/todos',todos)
 
 
 const port = process.env.PORT || 5001;
