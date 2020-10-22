@@ -1,20 +1,25 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const path = require('path')
 
 const todos = require('./routes/api/todo');
 
+
 const app = express();
 
 //body-parser
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
+
+//parser express
+app.use(express.json());
+
 
 
 //bd Config
 const db = require('./config/keys').mongoURI;
 //db connect mongo
-mongoose.connect(db,{ useUnifiedTopology: true,useNewUrlParser: true })
+mongoose.connect(db,{ useUnifiedTopology: true,useNewUrlParser: true,useCreateIndex:true })
 .then(()=>{
     console.log('mongo db connected ! .....')
 }).catch(err=>{
@@ -24,6 +29,7 @@ mongoose.connect(db,{ useUnifiedTopology: true,useNewUrlParser: true })
 
 //use route 
 app.use('/api/todos',todos)
+app.use('/api/users',require('./routes/api/users'))
 
 
 //serve static if in production
