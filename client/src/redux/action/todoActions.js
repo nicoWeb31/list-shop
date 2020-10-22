@@ -1,22 +1,70 @@
-import {GET_TODOS,DELETE_TODO,ADD_TODO} from './type';
+import { GET_TODOS, DELETE_TODO, ADD_TODO, TODO_LOADING } from './type';
+import axios from 'axios';
 
-export const getTodos = () =>{
-    return {
-        type: GET_TODOS
-    }
+
+export const getTodos = () => dispatch => {
+
+    //dispatch set loading a true
+    dispatch(setTodoLoading())
+
+    axios
+        .get('/api/todos')
+        .then(res =>
+            dispatch({
+                type: GET_TODOS,
+                payload: res.data
+            })
+        )
+
+    // try{
+
+    //     const res = await axios.get('/api/todos');
+    //     dispatch({
+    //             type:GET_TODOS,
+    //             payload: res.data
+    //         })   
+
+    // }catch(err){
+    //     console.log(err)
+    // }
+
 }
 
 
-export const deleteTodo = id =>{
-    return {
-        type : DELETE_TODO,
-        payload: id
-    }
+export const deleteTodo = id => dispatch=> {
+
+
+    axios.delete(`/api/todos/${id}`)
+    .then(res=>
+        dispatch({
+            type: DELETE_TODO,
+            payload: id
+        })
+        
+    )
+
 }
 
-export const addTodo = todo =>{
+export const addTodo = todo => dispatch => {
+
+    axios
+        .post('/api/todos',todo)
+        .then(res =>
+            dispatch({
+                type: ADD_TODO,
+                payload: res.data
+            })
+        )
+
+
+//     return {
+//         type: ADD_TODO,
+//         payload: todo
+//     }
+}
+
+export const setTodoLoading = () => {
     return {
-        type: ADD_TODO,
-        payload : todo
+        type: TODO_LOADING
     }
 }

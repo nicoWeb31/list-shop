@@ -36,15 +36,15 @@ class TodoList extends Component {
 
                 <ListGroup>
                     <TransitionGroup className="todo-list">
-                        {this.props.todos && this.props.todos.todos.map(({id,name})=>(
+                        {this.props.todos && this.props.todos.todos.map(({_id,name})=>(
 
-                            <CSSTransition key={id} timeout={500} classNames="fade">
+                            <CSSTransition key={_id} timeout={500} classNames="fade">
                                 <ListGroupItem>
                                 <Button
                                 className="remove-btn"
                                 color="danger"
                                 size="sm"
-                                onClick={()=>this.deleteTodo(id)}
+                                onClick={()=>this.deleteTodo(_id)}
                                 >&times;</Button>
                                     {name}
                                 </ListGroupItem>

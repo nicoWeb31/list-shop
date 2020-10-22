@@ -25,7 +25,6 @@ class TodoModal extends Component {
     onFormSubmit = (e) =>{
         e.preventDefault();
         const newTodo = {
-            id: uuid(),
             name: this.state.name
         }
 
