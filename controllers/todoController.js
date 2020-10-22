@@ -19,7 +19,7 @@ exports.postTodo = (req,res)=>{
     newTodo.save().then(todo => res.json(todo))
 }
 
-//----------------
+//---------------------------
 exports.deleteTodo = (req,res)=>{
     Todo.findById(req.params.id)
     .then(todo => todo.remove().then(()=> res.json({success:true})))
