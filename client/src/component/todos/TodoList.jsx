@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import {Container,ListGroup,ListGroupItem,Button} from "reactstrap";
-import { CSSTransition, TransitionGroup}from "react-transition-group";
-import {v1 as uuid} from "uuid";
-
 //connect form wrap component
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { Button, Container, ListGroup, ListGroupItem } from "reactstrap";
 //action
-import {getTodos, deleteTodo} from '../../redux/action/todoActions';
+import { deleteTodo, getTodos } from '../../redux/action/todoActions';
+
 
 
 

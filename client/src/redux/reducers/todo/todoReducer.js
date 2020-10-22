@@ -1,5 +1,4 @@
-import {v1 as uuid} from "uuid";
-import {GET_TODOS,DELETE_TODO,ADD_TODO,TODO_LOADING} from '../../action/type'
+import { ADD_TODO, DELETE_TODO, GET_TODOS, TODO_LOADING } from '../../action/type';
 
 
 const initialState = {

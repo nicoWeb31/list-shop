@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
-import { Button,Modal,ModalHeader,ModalBody,Form,FormGroup,Label,Input} from 'reactstrap'
-import {connect} from 'react-redux';
-import {v1 as uuid} from "uuid";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Button, Form, FormGroup, Input, Label, Modal, ModalBody, ModalHeader } from 'reactstrap';
+import { addTodo } from '../../redux/action/todoActions';
 
-import {addTodo} from '../../redux/action/todoActions';
 
 
 
