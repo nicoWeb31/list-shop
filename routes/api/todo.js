@@ -9,16 +9,16 @@ const auth = require('../../middleware/auth')
 //@route Get api/todos
 //@desc Get all todos
 //@access Public
-route.get('/',auth,todoController.getAllTodo)
+route.get('/',todoController.getAllTodo)
 
 //@route Post api/todos
 //@desc Creat a todos
-//@access Public
+//@access Private
 route.post('/',auth,todoController.postTodo)
 
 //@route delete api/todos
 //@desc delete a todo
-//@access Public
+//@access Private
 route.delete('/:id',auth,todoController.deleteTodo)
 
 

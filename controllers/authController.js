@@ -42,3 +42,12 @@ exports.authUser = (req, res) => {
                 })
         })
 }
+
+exports.getUserData = (req, res) =>{
+    console.log(req.user)
+
+    User.findById(req.user.id)
+    .select('-password')//moins le password
+    .then(user => res.json(user))
+
+}
