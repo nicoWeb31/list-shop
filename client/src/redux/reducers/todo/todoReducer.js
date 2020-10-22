@@ -27,6 +27,12 @@ export default (state = initialState, action) => {
                 todos : state.todos.filter(todo => todo.id !== action.payload)
             }
 
+        case ADD_TODO : 
+        return {
+            ...state,
+            todos : [action.payload,...state.todos]
+        }    
+
         default :
             return state
 

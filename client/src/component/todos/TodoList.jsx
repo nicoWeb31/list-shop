@@ -22,16 +22,6 @@ class TodoList extends Component {
     }
 
 
-    addTodo = () =>{
-        const name = prompt('Enter todo')
-        if(name){
-            this.setState(state=>({
-                todos :[...state.todos,{id : uuid(), name}
-                ]
-            }))
-        }
-    }
-
     deleteTodo = (id) =>{
         this.props.deleteTodo(id)
     }
@@ -43,12 +33,6 @@ class TodoList extends Component {
         return (
             <Container>
 
-
-                <Button 
-                color="dark"
-                style={{marginBottom: '2rem'}}
-                onClick={this.addTodo}
-                >Add Todo</Button>
 
                 <ListGroup>
                     <TransitionGroup className="todo-list">
