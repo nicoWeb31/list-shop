@@ -1,4 +1,4 @@
-import {GET_ERROS,CLEAR_ERRORS} from '../action/type';
+import {GET_ERROS,CLEAR_ERRORS} from './type';
 
 //return err
 export const returnErrors = (message,status,id = null) =>{

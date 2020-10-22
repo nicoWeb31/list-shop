@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
@@ -9,26 +9,37 @@ import { Container } from 'reactstrap'
 
 //-------for redux-----------
 import { Provider } from 'react-redux';
-import store from './store'
+import store from './store';
+import {loadUser} from './redux/action/authAction';
+ 
 
 
 
-function App() {
-  return (
-    <Provider store={store}>
+class App extends Component {
 
+  componentDidCatch(){
+    store.dispatch(loadUser())
 
-      <div className="App">
-        <AppNavBar />
-        <Container>
-          <TodoModal />
-          <TodoList />
-        </Container>
-      </div>
+  }
 
+  render(){
+    return (
+      <Provider store={store}>
+  
+  
+        <div className="App">
+          <AppNavBar />
+          <Container>
+            <TodoModal />
+            <TodoList />
+          </Container>
+        </div>
+  
+  
+      </Provider>
+    );
 
-    </Provider>
-  );
+  }
 }
 
 export default App;

@@ -4,16 +4,18 @@ const jwt = require('jsonwebtoken');
 //middleware for jwt
 const auth = (req, res, next) => {
 
+    //token from header
+    const token = req.header('x-auth-token');
+    
+    //check from token
+    if (!token) {
+        return res.status(401).json({ message: "token empty or invalid !" })
+    }
+
+
+    
     try {
-
-        //token from header
-        const token = req.header('x-auth-token');
-
-        //check from token
-        if (!token) {
-            res.status(401).json({ message: "token empty or invalid !" })
-        }
-
+    
         //vefify token
         //on decode :
         const decoded = jwt.verify(token, config.get('jwtSecret'))

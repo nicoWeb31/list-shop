@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { returnErrors } from '../action/errorAction'
+import { returnErrors } from './errorAction'
 
 import {
     USER_LOADED,
@@ -10,7 +10,7 @@ import {
     REGISTER_FAIL,
     REGISTER_SUCCESS,
     LOGOUT_SUCCESS
-} from '../../action/type';
+} from './type';
 
 
 //check token and load user
