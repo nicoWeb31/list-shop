@@ -6,7 +6,7 @@ import {v1 as uuid} from "uuid";
 //connect form wrap component
 import {connect} from 'react-redux';
 //action
-import {getTodos} from '../../redux/action/todoActions';
+import {getTodos, deleteTodo} from '../../redux/action/todoActions';
 
 
 
@@ -33,9 +33,7 @@ class TodoList extends Component {
     }
 
     deleteTodo = (id) =>{
-        this.setState(state=>({
-            todos : state.todos.filter(todo => todo.id !== id)
-        }))
+        this.props.deleteTodo(id)
     }
 
 
@@ -78,4 +76,4 @@ class TodoList extends Component {
 
 //  state ----> combineReduceer -----> statevalue
 const mapStateToProps = (state) =>({todos:state.todo})
-export default connect(mapStateToProps,{getTodos})(TodoList);
+export default connect(mapStateToProps,{getTodos,deleteTodo})(TodoList);

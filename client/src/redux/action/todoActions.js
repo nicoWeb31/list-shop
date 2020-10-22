@@ -5,3 +5,11 @@ export const getTodos = () =>{
         type: GET_TODOS
     }
 }
+
+
+export const deleteTodo = id =>{
+    return {
+        type : DELETE_TODO,
+        payload: id
+    }
+}

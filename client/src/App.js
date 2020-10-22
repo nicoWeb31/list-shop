@@ -3,7 +3,8 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 import AppNavBar from './component/AppNavBar';
-import TodoList from './component/todos/TodoList'
+import TodoList from './component/todos/TodoList';
+import TodoModal from './component/todos/TodoModal'
 
 //-------for redux-----------
 import {Provider} from 'react-redux';
@@ -17,6 +18,7 @@ function App() {
 
     <div className="App">
       <AppNavBar/>
+      <TodoModal/>
       <TodoList/>
     </div>
 
