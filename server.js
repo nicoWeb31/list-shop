@@ -31,6 +31,7 @@ mongoose.connect(db,{ useUnifiedTopology: true,useNewUrlParser: true,useCreateIn
 //use route 
 app.use('/api/todos',todos)
 app.use('/api/users',require('./routes/api/users'))
+app.use('/api/auth',require('./routes/api/auth'))
 
 
 //serve static if in production

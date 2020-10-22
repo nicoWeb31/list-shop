@@ -23,7 +23,19 @@ content-type: application/json
 
 {
     "name":"totodfs",
-    "email":"nico.ridot@free.fr",
+    "email":"niffco.riqsdot@free.fr",
+    "password":"sdlmkfjslmdfjslkdfj"
+}
+
+###
+
+
+POST  http://localhost:5001/api/auth
+content-type: application/json
+
+
+{
+    "email":"niffco.ridot@free.fr",
     "password":"sdlmkfjslmdfjslkdfj"
 }
 
