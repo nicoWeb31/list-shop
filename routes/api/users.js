@@ -1,6 +1,11 @@
 const express = require('express');
 const route = express.Router();
-const todoController = require('../../controllers/usersController')
+
+const bcrypt = require('bcryptjs');
+const config = require('config');
+const jwt = require('jsonwebtoken');
+const todoController = require('../../controllers/usersController');
+
 
 const User = require('../../models/User')
 
@@ -8,7 +13,43 @@ const User = require('../../models/User')
 //@desc register new users
 //@access Public
 route.post('/',(req,res)=>{
-    res.send('register')
+    //on recupere le body
+    const {name,email,password} = req.body;
+
+    //simple validation
+    if(!name || !email || !password ){
+        res.status(400).json({message: 'Please enter all fiels'})
+    }
+
+    //Check for user exist
+    User.findOne({email})
+    .then(user =>{
+        if(user) return res.status(400).json({message: 'User alredy exist'});
+
+        const newUser = new User({name,email,password})
+
+        //encode password
+        //create salt
+        bcrypt.genSalt(10, (err,salt)=>{
+            bcrypt.hash(newUser.password,salt,(err,hash)=>{
+                if(err) throw err;
+                newUser.password =hash;
+                newUser.save()
+                .then(user=>{
+                    res.json({
+                        user : {
+                            id: user.id,
+                            name: user.name,
+                            email: user.email
+                        }
+                    })
+                })
+            })
+
+        })
+
+
+    })
 })
 
 // //@route Post api/todos

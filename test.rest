@@ -18,5 +18,13 @@ DELETE  http://localhost:5001/api/todos/5f90035fd660de3057c17
 ###
 
 POST  http://localhost:5001/api/users
+content-type: application/json
+
+
+{
+    "name":"totodfs",
+    "email":"nico.ridot@free.fr",
+    "password":"sdlmkfjslmdfjslkdfj"
+}
 
 ###
