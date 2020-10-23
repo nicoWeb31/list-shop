@@ -46,6 +46,8 @@ export default (state =initialState, action)=>{
             }
 
         case REGISTER_SUCCESS:
+            //send token in local storage
+            localStorage.setItem('token',action.payload.token)
             return{
                 ...state,
                 ...action.payload,

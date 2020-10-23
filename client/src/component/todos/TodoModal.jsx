@@ -79,8 +79,6 @@ class TodoModal extends Component {
                         </FormGroup>
                     </Form>
                 </ModalBody>
-
-
             </Modal>
 
             </div>

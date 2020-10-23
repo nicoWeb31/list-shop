@@ -8,7 +8,9 @@ import {
     NavItem,
     NavLink,
     Container
-} from 'reactstrap'
+} from 'reactstrap';
+
+import RegisterModal from '../component/auth/RegisterModal'
 
 
 
@@ -35,9 +37,7 @@ class AppNavBar extends Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="http://riot-nico-web.fr/">
-                                <h3 className="text-white">nico</h3>
-                                </NavLink>
+                                <RegisterModal />
 
                             </NavItem>
                         </Nav>
