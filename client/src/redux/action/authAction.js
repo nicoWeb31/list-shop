@@ -13,26 +13,43 @@ import {
 } from './type';
 
 
+//set up config------------------------------------
+
+export const tokenConfig = getState =>{
+        //get token from localStorage via state auth and token 
+        const token = getState().auth.token
+
+        //headers axios 
+        const config = {
+            headers: {
+                "Content-type": "application/json"
+            }
+        }
+        //si un token existe je l'utilise
+        if (token) {
+            config.headers['x-auth-token'] = token
+        }
+
+        return config
+}
+
+
+
+
+
+
+
+
 //check token and load user
 export const loadUser = () => (dispatch, getState) => {
+
+
+    const configHeader = tokenConfig(getState);
+
     //user loading 
     dispatch({ type: USER_LOADING })
 
-    //get token from localStorage via state auth and token 
-    const token = getState().auth.token
-
-    //headers axios 
-    const config = {
-        headers: {
-            "Content-type": "application/json"
-        }
-    }
-    //si un token existe je l'utilise
-    if (token) {
-        config.headers['x-auth-token'] = token
-    }
-
-    axios.get('/api/auth/user', token)
+    axios.get('/api/auth/user', configHeader)
         .then(res => dispatch({
             type: USER_LOADING,
             payload: res.data

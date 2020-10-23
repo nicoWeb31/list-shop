@@ -11,13 +11,13 @@ import { Container } from 'reactstrap'
 import { Provider } from 'react-redux';
 import store from './store';
 import {loadUser} from './redux/action/authAction';
- 
+
 
 
 
 class App extends Component {
 
-  componentDidCatch(){
+  componentDidMount(){
     store.dispatch(loadUser())
 
   }

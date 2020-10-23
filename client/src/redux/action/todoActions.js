@@ -16,18 +16,6 @@ export const getTodos = () => dispatch => {
             })
         )
 
-    // try{
-
-    //     const res = await axios.get('/api/todos');
-    //     dispatch({
-    //             type:GET_TODOS,
-    //             payload: res.data
-    //         })   
-
-    // }catch(err){
-    //     console.log(err)
-    // }
-
 }
 
 
@@ -56,11 +44,6 @@ export const addTodo = todo => dispatch => {
             })
         )
 
-
-//     return {
-//         type: ADD_TODO,
-//         payload: todo
-//     }
 }
 
 export const setTodoLoading = () => {
