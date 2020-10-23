@@ -57,17 +57,16 @@ class LoginModal extends Component {
     onFormSubmit = (e) => {
         e.preventDefault();
 
-        const { name, email, password } = this.state
+        const { email, password } = this.state
 
         //create object
-        const newUser = {
-            name,
+        const user = {
             email,
             password
         }
 
-        //call register action
-        this.props.register(newUser)
+        //call login action
+        this.props.login(user)
 
     }
 

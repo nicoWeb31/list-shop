@@ -38,13 +38,6 @@ export default (state =initialState, action)=>{
             }
         
         case LOGIN_SUCCESS :
-            return {
-                ...state,
-                ...action.payload,
-                isAthutenticated:true,
-                isLoading:false,
-            }
-
         case REGISTER_SUCCESS:
             //send token in local storage
             localStorage.setItem('token',action.payload.token)
