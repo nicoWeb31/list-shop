@@ -34,13 +34,7 @@ export const tokenConfig = getState =>{
 }
 
 
-
-
-
-
-
-
-//check token and load user
+//----------------check token and load user-------------
 export const loadUser = () => (dispatch, getState) => {
 
 
@@ -61,5 +55,45 @@ export const loadUser = () => (dispatch, getState) => {
                 type:AUTH_ERR
             })
         })
+    }
+
+
+//-----------------register----------------
+export const register = ({name, email, password}) => dispatch =>{
+
+    //header
+    const configHeader = {
+        headers: {
+            "Content-type": "application/json"
+        }
+    }
+
+    const body = JSON.stringify({name,email,password})
+    axios.post('/api/users',body,configHeader)
+    .then(res=> dispatch({
+        type:REGISTER_SUCCESS,
+        payload: res.data
+    }))
+    .catch(err=>{
+
+        dispatch(returnErrors(err.response.data,err.response.status, 'REGISTER_FAIL'))
+        dispatch({
+            type:REGISTER_FAIL,
+
+        })
+
+    })
 
 }
+
+//---------------logout----------------
+export const logout = () =>{
+
+    return {
+        type: LOGOUT_SUCCESS
+    }
+
+}
+
+
+
