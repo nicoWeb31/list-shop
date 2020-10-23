@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Form, FormGroup, Input, Label, Modal, ModalBody, ModalHeader } from 'reactstrap';
 import { addTodo } from '../../redux/action/todoActions';
+//import PropTypes from 'prop-types';
 
 
 
@@ -14,6 +15,10 @@ class TodoModal extends Component {
             name:''
         };
     }
+
+    // static propTypes = {
+    //     isAuth: PropTypes.bool
+    // }
 
     toggle =()=>{
         this.setState({
@@ -46,11 +51,19 @@ class TodoModal extends Component {
         return (
             <div>
 
+            {this.props.isAuth ? (
+
             <Button
             color="dark"
             style={{marginBottom:'2rem'}}
             onClick={this.toggle}
             >Add Todo</Button>
+
+
+            ):
+            (
+                <h4 className="mb-3 ml-4"> Please login or register to manage yours todos</h4>
+            )}
 
 
             <Modal
@@ -88,4 +101,8 @@ class TodoModal extends Component {
     }
 }
 
-export default connect(null,{addTodo})(TodoModal);
+const mapStateProps = state =>({
+    isAuth: state.auth.isAthutenticated
+})
+
+export default connect(mapStateProps,{addTodo})(TodoModal);

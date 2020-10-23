@@ -39,12 +39,18 @@ class TodoList extends Component {
 
                             <CSSTransition key={_id} timeout={500} classNames="fade">
                                 <ListGroupItem>
+
+                                {this.props.isAuth && 
                                 <Button
                                 className="remove-btn"
                                 color="danger"
                                 size="sm"
                                 onClick={()=>this.deleteTodo(_id)}
                                 >&times;</Button>
+                                }
+                                
+
+
                                     {name}
                                 </ListGroupItem>
                             </CSSTransition>
@@ -58,5 +64,8 @@ class TodoList extends Component {
 }
 
 //  state ----> combineReduceer -----> statevalue
-const mapStateToProps = (state) =>({todos:state.todo})
+const mapStateToProps = (state) =>({
+    todos:state.todo,
+    isAuth: state.auth.isAthutenticated
+})
 export default connect(mapStateToProps,{getTodos,deleteTodo})(TodoList);
